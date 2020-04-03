@@ -17,12 +17,8 @@ let i = 0;
 while ( i < 5 ) {
   i++;
   let gender = randChoice(genders);
-  let firstName;
-
-  gender =='male' ? 
-    firstName = randChoice(maleNames) : 
-    firstName = randChoice(femaleNames);
-
+  let name = gender ==='male' ? maleNames : femaleNames;
+  let firstName = randChoice(name);
   let lastName = randChoice(lastNames);
   let age = randomNumber(18,78);
   let mail = firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@gmail.com';
