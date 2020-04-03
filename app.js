@@ -1,14 +1,11 @@
 const generator = require('fs');
+const { maleNames, femaleNames, lastNames } = require('./names');
 
 const genders = ['male', 'female'];
-const maleNames = ['John', 'Michael', 'Steve', 'Peter'];
-const femaleNames = ['Emily', 'Mary', 'Margaret', 'Jane'];
-const lastNames = ['Smith', 'Carter', 'Stalone', 'Bond'];
 const people = [];
 
 const randChoice = arr =>
   arr[Math.floor(Math.random() * arr.length)];
-;
 
 const randomNumber = (min, max) => {
   min = Math.ceil(min);
@@ -16,15 +13,15 @@ const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-for (let i = 0; i<20; i++) {
+let i = 0;
+while ( i < 5 ) {
+  i++;
   let gender = randChoice(genders);
   let firstName;
 
-  if (gender =='male') {
-    firstName = randChoice(maleNames);
-  } else if (gender == 'female') {
+  gender =='male' ? 
+    firstName = randChoice(maleNames) : 
     firstName = randChoice(femaleNames);
-  }
 
   let lastName = randChoice(lastNames);
   let age = randomNumber(18,78);
@@ -40,9 +37,7 @@ for (let i = 0; i<20; i++) {
   people.push(identity);
 }
 
-console.log(people);
-
-const randomPeople = JSON.stringify(people);
+const randomPeople = JSON.stringify(people, null, ' ');
 
 generator.writeFile('people.json', randomPeople, (err) => {
     if (err) throw err;
